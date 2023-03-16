@@ -5,6 +5,8 @@ import About from "./routes/about.js";
 import Contact from "./routes/contact.js";
 import Services from "./routes/services.js";
 import { Routes, Route } from "react-router-dom";
+import LoginView from "./pages/LoginView";
+import Login from "./components/Auth/Login";
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Route path="/services" element={<Services />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/login" element={<LoginView />}></Route>
     </Routes>
   );
 }

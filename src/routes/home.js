@@ -5,11 +5,10 @@ import Footer from "../components/Footer";
 
 const home = () => {
   return (
-    <div>
-      <NavBar />
+    <>
       <HeroImage />
       <Footer />
-    </div>
+    </>
   );
 };
 

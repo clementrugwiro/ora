@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 const services = () => {
   return (
     <div>
-      <NavBar />
       <HeroImage1 />
       <Footer />
     </div>
