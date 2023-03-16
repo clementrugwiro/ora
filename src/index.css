@@ -1,20 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&family=Passions+Conflict&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&family=Passions+Conflict&display=swap");
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Oswald',sans-serif;
- 
+  font-family: "Oswald", sans-serif;
 }
 
-body{
+body {
   background-color: black;
 }
-h1,h4,p,a{
+h1,
+h4,
+p,
+a {
   text-decoration: none;
   color: white;
 }
-.btn{
+.btn {
   padding: 12px 32px;
   font-size: 1rem;
   text-transform: uppercase;
@@ -30,7 +32,7 @@ h1,h4,p,a{
   color: #fff;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
   transition: 0.3s;
