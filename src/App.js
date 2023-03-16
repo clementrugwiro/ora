@@ -7,6 +7,7 @@ import Services from "./routes/services.js";
 import { Routes, Route } from "react-router-dom";
 import LoginView from "./pages/LoginView";
 import Login from "./components/Auth/Login";
+import Upload from "./components/Upload";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<LoginView />}></Route>
+      <Route path="/add" element={<Upload />}></Route>
     </Routes>
   );
 }
