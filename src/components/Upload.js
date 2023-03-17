@@ -8,9 +8,11 @@ import { loginFields } from "../constants/formFields";
 import { login } from "../redux/actions/auth.action";
 import Input from "./Auth/Input";
 import Alert from "./Auth/Alert";
+import FormAction from "./Auth/FormAction";
 
 const fields = loginFields;
 const fieldsState = {};
+
 fields.forEach((field) => {
   fieldsState[field.id] = "";
 });
@@ -40,7 +42,7 @@ const Upload = () => {
   const [images, setImages] = React.useState([]);
   const [images2, setImages2] = React.useState([]);
 
-  const maxNumber = 69;
+  const maxNumber = 1;
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
@@ -53,9 +55,10 @@ const Upload = () => {
     console.log(imageList2, addUpdateIndex2);
     setImages2(imageList2);
   };
+
   return (
-    <div className="min-h-full z-0 md:h-screen flex items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
-      <div className="bg-white  max-w-xl min-h-fit w-full  space-y-4 border p-6 rounded shadow-lg">
+    <div className="min-h-full z-0 md:h-screen flex items-center justify-center py-12 md:py-40 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white mt-24 max-w-xl min-h-fit w-full  space-y-4 border p-6 py-6 rounded shadow-lg">
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 ">
             {/* {error && (
@@ -181,6 +184,12 @@ const Upload = () => {
               )}
             </ImageUploading>
           </div>
+          <hr className="border shadow" />
+          <FormAction
+            handleSubmit={handleSubmit}
+            text="Upload"
+            customClass="border py-2 px-1  border-gray-400 hover:border-transparent shadow text-lg font-medium rounded-md text-black bg-white hover:bg-[#dfc30d]"
+          />
         </form>
       </div>
     </div>
