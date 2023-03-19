@@ -13,8 +13,8 @@ const HeroImage = () => {
       <div className="content">
         <h1>Ora welcomes you</h1>
         <p>
-          your go-to platform for connecting with the right clients and
-          companies.
+          your go-to platform for connecting with the right clients
+          andcompanies.
         </p>
         <div>
           <Link to="/services" className="btn">

@@ -1,18 +1,18 @@
+import React, { createContext, useMemo, useState } from "react";
+
 const getInitialState = () => {
   if (window && window.localStorage) {
     const storedUser = window.localStorage.getItem("auth");
-    /* istanbul ignore if */
     if (storedUser) return JSON.parse(storedUser);
   }
   return { name: "", role: "user", auth: false };
 };
 
-export const UserContext = createContext < any > getInitialState;
+export const UserContext = createContext(getInitialState);
 
 function UserProvider({ children, ...props }) {
-  const [user, setUser] = useState < any > getInitialState;
+  const [user, setUser] = useState(getInitialState);
   const login = (data) => {
-    /* istanbul ignore next */
     localStorage.setItem(
       "auth",
       JSON.stringify({
@@ -23,9 +23,7 @@ function UserProvider({ children, ...props }) {
         email: data.user.email,
       })
     );
-    /* istanbul ignore next */
     localStorage.setItem("auth_token", data.token);
-    /* istanbul ignore next */
     setUser(() => ({
       name: data.user?.profile?.name,
       auth: true,
@@ -36,19 +34,21 @@ function UserProvider({ children, ...props }) {
       profileImage: data.user?.profile?.avatar,
     }));
   };
-  /* istanbul ignore next */
+
   const logout = () => {
     localStorage.removeItem("auth");
     localStorage.removeItem("auth_token");
     setUser(() => ({ name: "", role: "user", auth: false }));
   };
-  /* istanbul ignore next */
+
   const setName = (name) => {
     setUser({ ...user, name });
   };
+
   const setProfileImage = (profileImage) => {
     setUser({ ...user, profileImage });
   };
+
   const value = useMemo(
     () => ({
       user,
