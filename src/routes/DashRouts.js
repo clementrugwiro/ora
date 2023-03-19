@@ -11,7 +11,7 @@ function DashboardRoutes() {
   return (
     <PrivateRoute>
       <div className="flex flex-col min-h-screen">
-        <NavBar />
+        <NavBar isDashboard={true} />
         <Sidebar toggle={handleClick} style="hidden lg:flex" />
         <Routes>
           <Route path="/add" element={<Upload />}></Route>

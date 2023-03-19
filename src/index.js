@@ -6,14 +6,17 @@ import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import UserProvider from "./hooks/useAuth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <NavBar />
-      <App />
+      <UserProvider>
+        <NavBar isDashboard={false} />
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </Provider>
 );

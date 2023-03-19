@@ -16,22 +16,20 @@ function UserProvider({ children, ...props }) {
     localStorage.setItem(
       "auth",
       JSON.stringify({
-        name: data.user?.profile?.name,
-        firstName: data.user?.profile?.firstName,
+        name: data.user?.name,
+        firstName: data?.firstName,
         auth: true,
-        role: data.user?.role,
-        email: data.user.email,
+        email: data.user?.email,
       })
     );
     localStorage.setItem("auth_token", data.token);
     setUser(() => ({
-      name: data.user?.profile?.name,
+      name: data.user?.name,
       auth: true,
-      role: data.user.role,
       email: data.user.email,
-      firstName: data.user?.profile?.firstName,
-      id: data.user?.profile?.id,
-      profileImage: data.user?.profile?.avatar,
+      // firstName: data.user?.profile?.firstName,
+      // id: data.user?.profile?.id,
+      // profileImage: data.user?.profile?.avatar,
     }));
   };
 

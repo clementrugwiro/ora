@@ -1,7 +1,7 @@
 import "./NavBarStyles.css";
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const NavBar = () => {
@@ -16,8 +16,8 @@ const NavBar = () => {
       setcolor(false);
     }
   };
-
-  window.addEventListener("scroll", changeColor);
+  let isDashboard = useLocation().pathname == "/dashboard/add";
+  !isDashboard && window.addEventListener("scroll", changeColor);
 
   return (
     <div className={color ? "header header-bg" : "header"}>
