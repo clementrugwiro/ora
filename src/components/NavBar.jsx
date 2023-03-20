@@ -16,8 +16,8 @@ const NavBar = () => {
       setcolor(false);
     }
   };
-  let isDashboard = useLocation().pathname == "/dashboard/add";
-  !isDashboard && window.addEventListener("scroll", changeColor);
+  let path = useLocation().pathname;
+  !path.includes("dashboard") && window.addEventListener("scroll", changeColor);
 
   return (
     <div className={color ? "header header-bg" : "header"}>
@@ -38,7 +38,9 @@ const NavBar = () => {
           <Link to="/contact">Contact Us</Link>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <Link to="/login">
+            {path.includes("dashboard") ? "Log out" : "Login"}
+          </Link>
         </li>
       </ul>
       <div className="hamburger" onClick={handleClick}>

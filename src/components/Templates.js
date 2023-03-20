@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ImageUploading from "react-images-uploading";
 import { loginFields } from "../constants/formFields";
 import { login } from "../redux/actions/auth.action";
 import Alert from "./Auth/Alert";
 import Sidebar from "./Sidebar";
 import DataTable from "./DataTable";
-import { PencilAltIcon, XCircleIcon } from "@heroicons/react/solid";
+import { PencilAltIcon, XCircleIcon, PlusIcon } from "@heroicons/react/solid";
 const fields = loginFields;
 const fieldsState = {};
 
@@ -158,6 +158,16 @@ const Templates = () => {
             className="mt-72"
           />
           <div className="w-full min-h-screen bg-[#F9F9FB] mt-20">
+            <div className="flex items-left px-5 lg:px-60 pt-8 pb-8">
+              <div className="space-x-8 lg:ml-7">
+                <Link to="/dashboard/add">
+                  <button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-[#f8d90f] hover:bg-[#dfc30d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 ">
+                    <PlusIcon className="text-white w-6 mt-1 -ml-2" /> Add New
+                    Template
+                  </button>
+                </Link>
+              </div>
+            </div>
             <div className=" m-6 md:m-3 mt-10">
               <DataTable
                 data={dummy}
