@@ -35,7 +35,7 @@ function Sidebar({ style, toggle }) {
   useEffect(() => {}, [togglei]);
   return (
     <div
-      className={`${style} flex-col fixed h-[90%] mt-20 pt-[3vh] lg:pt-[11vh] bg-white dark:bg-dark-bg border-r p-2`}
+      className={`${style} flex-col fixed h-[90%] mt-20 pt-[3vh] lg:pt-[11vh] bg-white  border-r p-2`}
     >
       <div className="list-none pr-8">
         <SideNavLink onClick={toggle} name="Dashboard" to="/dashboard/">
@@ -45,43 +45,15 @@ function Sidebar({ style, toggle }) {
         {/* FOR SUPER ADMINS */}
         <SideNavLink
           onClick={toggle}
-          name="Organizations"
-          to="/dashboard/organizations"
+          name="Templates"
+          to="/dashboard/templates"
         >
-          <HomeIcon className="w-5 mr-2 " />
-        </SideNavLink>
-        <SideNavLink
-          onClick={toggle}
-          name="Admins"
-          data-testid="keppi"
-          to="/dashboard/admins"
-        >
-          <UsersIcon className="w-5 mr-2 " />
-        </SideNavLink>
-        <SideNavLink onClick={toggle} name="Domains" to="/dashboard/domains">
-          <GlobeAltIcon className="w-5 mr-2 " />
+          <TemplateIcon className="w-5 mr-2 " />
         </SideNavLink>
 
-        {/* Shared Links */}
-        <SideNavLink
-          onClick={toggle}
-          name="Notifications"
-          to="/dashboard/notifications"
-        >
-          <BellIcon className="w-5 mr-2" />
-        </SideNavLink>
-        <SideNavLink onClick={toggle} name="Calendar" to="/dashboard/calendar">
-          <CalendarIcon className="w-5 mr-2" />
-        </SideNavLink>
-        <SideNavLink onClick={toggle} name="Docs" to="/dashboard/docs">
-          <FolderIcon className="w-5 mr-2 " />
-        </SideNavLink>
-        <SideNavLink onClick={toggle} name="Help" to="/dashboard/support">
-          <SupportIcon className="w-5 mr-2 " />
-        </SideNavLink>
         {/* Add icons */}
         <div className="flex flex-row ml-10 mt-auto list-none">
-          <li className="px-2">
+          <li className="px-2 mt-10">
             <NavLink to="#link">
               <Tooltip message="Logout">
                 <LogoutIcon

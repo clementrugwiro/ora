@@ -20,7 +20,6 @@ function DataTable({ data, columns, title }) {
     useSortBy,
     usePagination
   );
-  const { t } = useTranslation();
 
   const {
     getTableProps,
@@ -48,7 +47,7 @@ function DataTable({ data, columns, title }) {
       <div className=" flex items-center justify-between pb-6">
         <div>
           <h2 className="text-gray-800 dark:text-white font-semibold text-xl">
-            {t(title)}
+            {title}
           </h2>
           {/* <span className="text-xs text-gray-600">Current cohort</span> */}
           <input
@@ -63,7 +62,10 @@ function DataTable({ data, columns, title }) {
         <table className="min-w-full leading-normal" {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
+              <tr
+                {...headerGroup.getHeaderGroupProps()}
+                className="bg-secondary text-white"
+              >
                 {headerGroup.headers.map((column) => (
                   <th
                     className={column.isSorted ? "sort-asc thead" : " thead"}
@@ -86,7 +88,7 @@ function DataTable({ data, columns, title }) {
                   : "bg-white dark:bg-dark-bg";
 
               return (
-                <tr className={` ${rowTheme}} `} {...row.getRowProps()}>
+                <tr className={` ${rowTheme} `} {...row.getRowProps()}>
                   {row.cells.map((cell) => (
                     <td className="data-cell" {...cell.getCellProps()}>
                       {cell.render("Cell")}
