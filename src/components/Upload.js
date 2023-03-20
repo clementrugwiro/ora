@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ImageUploading from "react-images-uploading";
 import { loginFields } from "../constants/formFields";
-import { login } from "../redux/actions/auth.action";
 import Input from "./Auth/Input";
 import Alert from "./Auth/Alert";
 import FormAction from "./Auth/FormAction";
@@ -38,7 +37,7 @@ const Upload = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = loginState;
-    return dispatch(login({ email, password }));
+    return;
   };
 
   const [images, setImages] = React.useState([]);

@@ -1,15 +1,31 @@
-import axios from 'axios';
+// @ts-nocheck
+import axios from "axios";
 
-export const token = sessionStorage.getItem('AccessToken');
-export const roleId = window.sessionStorage.getItem('roleId');
+export const token = localStorage.getItem("accessToken");
+export const roleId = window.sessionStorage.getItem("roleId");
 
-const baseURl = process.env.REACT_APP_DEPLOYED_URL;
-export const localUrl = process.env.REACT_APP_LOCAL_URL;
-export const authUrl = process.env.REACT_APP_AUTH_URL;
+const baseURl = "http://localhost:7000/api/";
+export const localUrl = "https://eab9-54-152-1-195.ngrok.io";
+export const authUrl = "http://localhost:7000/";
 
 export const api = axios.create({
   baseURL: `${localUrl}`,
   headers: { Authorization: `Bearer ${token}` },
 });
 
+export const refreshToken = async (expired = null) => {
+  try {
+    const res = await axios.post(`${localUrl}users/refresh`, {
+      refreshTokenKey: localStorage.getItem("refreshToken"),
+    });
+    localStorage.setItem("accessToken", res.data.accessToken);
+    localStorage.setItem("refreshToken", res.data.refreshToken);
+  } catch (error) {
+    expired && alert("Session Expired");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("auth");
+    localStorage.removeItem("accessToken");
+    window.location = "/login-admin";
+  }
+};
 export default baseURl;

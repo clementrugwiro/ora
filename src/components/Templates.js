@@ -5,11 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import ImageUploading from "react-images-uploading";
 import { loginFields } from "../constants/formFields";
-import { login } from "../redux/actions/auth.action";
 import Alert from "./Auth/Alert";
 import Sidebar from "./Sidebar";
 import DataTable from "./DataTable";
-import { PencilAltIcon, XCircleIcon, PlusIcon } from "@heroicons/react/solid";
+import { PencilIcon, XCircleIcon, PlusIcon } from "@heroicons/react/solid";
 const fields = loginFields;
 const fieldsState = {};
 
@@ -37,7 +36,7 @@ const Templates = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = loginState;
-    return dispatch(login({ email, password }));
+    return;
   };
 
   const [images, setImages] = React.useState([]);
@@ -121,16 +120,16 @@ const Templates = () => {
   ];
 
   const columns = [
-    { Header: "First Name", accessor: "firstname" },
-    { Header: "Last Name", accessor: "lastname" },
-    { Header: "Email", accessor: "email" },
+    { Header: "Template", accessor: "firstname" },
+    { Header: "Empty Template", accessor: "lastname" },
+    { Header: "Category", accessor: "email" },
     { Header: "Phone Number", accessor: "phoneNumber" },
     {
       Header: "Action",
       accessor: "",
       Cell: ({ row }) => (
         <div className=" items-center flex">
-          <PencilAltIcon
+          <PencilIcon
             className="mr-2 text-primary"
             width="25"
             height="25"

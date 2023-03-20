@@ -6,6 +6,7 @@ import { UserContext } from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+import { loginUser } from "../../api/userApi";
 import { loginFields } from "../../constants/formFields";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
@@ -28,28 +29,20 @@ const Login = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   const { state } = useLocation();
 
   let { error, user } = useSelector((state) => state.login);
 
   const { login } = useContext(UserContext);
-  const onSubmit = (data) => {
-    user = {
-      email: "kevin",
-      password: "Rukundo1",
-      name: "kevin",
-      role: "superAdmin",
-    };
-    login({ user: { ...user, name: user.name } });
-    navigate("/dashboard/add");
 
-    // dispatch(loginUser(data));
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(loginState);
+
+    // login({ user: { ...user, name: user.name } });
+    // navigate("/dashboard/add");
+
+    dispatch(loginUser(loginState));
   };
 
   const handleChange = (e) => {
@@ -57,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+    <form className="mt-8 space-y-6" onSubmit={onSubmit}>
       <div className="">
         {error && (
           <Alert message={error.payload} heading="Error" variant="error" />
@@ -85,7 +78,7 @@ const Login = () => {
         ))}
       </div>
       <FormExtra />
-      <FormAction handleSubmit={handleSubmit} text="Login" />
+      <FormAction handleSubmit={onSubmit} text="Login" />
     </form>
   );
 };
